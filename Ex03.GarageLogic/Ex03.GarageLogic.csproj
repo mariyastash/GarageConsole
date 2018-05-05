@@ -37,8 +37,14 @@
   <ItemGroup>
     <Compile Include="Car.cs" />
     <Compile Include="eCarColor.cs" />
+    <Compile Include="eCarDoorsAmount.cs" />
+    <Compile Include="eFuelType.cs" />
     <Compile Include="ElectroCar.cs" />
     <Compile Include="ElectroMotorcycle.cs" />
+    <Compile Include="eMotoDriverLicense.cs" />
+    <Compile Include="eVehicleStatus.cs" />
+    <Compile Include="eVehicleWheelsAmount.cs" />
+    <Compile Include="GarageLogicControl.cs" />
     <Compile Include="Motorcycle.cs" />
     <Compile Include="RegularCar.cs" />
     <Compile Include="RegularMotorcycle.cs" />

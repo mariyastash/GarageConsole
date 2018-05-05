@@ -6,5 +6,13 @@ namespace Ex03.GarageLogic
 {
 	class Wheels
 	{
+		string m_BrandName;
+		float m_CurrentPSI;
+		float m_MaxPSI;
+
+		public bool FillAir()
+		{
+			return false;
+		}
 	}
 }

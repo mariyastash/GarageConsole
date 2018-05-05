@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Ex03.GarageLogic
 {
-	enum eCarColor
+	public enum eCarColor
 	{
 		Gray,
 		Blue,
