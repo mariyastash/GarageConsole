@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Ex03.ConsoleUI
 {
-	public class GarageUserInputControl
+	class GarageUserInputControl
 	{
 		
 	}

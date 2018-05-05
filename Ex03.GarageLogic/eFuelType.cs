@@ -4,11 +4,7 @@ using System.Text;
 
 namespace Ex03.GarageLogic
 {
-	public enum eFuelType
+	class eFuelType
 	{
-		Octan95 = 95,
-		Octan96,
-		Octan98,
-		Soler
 	}
 }
