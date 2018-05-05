@@ -4,7 +4,9 @@ using System.Text;
 
 namespace Ex03.GarageLogic
 {
-	class GarageLogicControl
+	public class GarageLogicControl
 	{
+		List<Vehicle> m_VehiclesList;
+
 	}
 }

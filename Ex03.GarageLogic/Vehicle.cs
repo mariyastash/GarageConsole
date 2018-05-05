@@ -38,7 +38,7 @@ namespace Ex03.GarageLogic
 		public eVehicleStatus VehivleStatus
 		{
 			get { return m_Status; }
-			set { m_Status = value}
+			set { m_Status = value; }
 		}
 
 		#endregion Props

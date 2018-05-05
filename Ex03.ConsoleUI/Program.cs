@@ -9,6 +9,9 @@ namespace Ex03.ConsoleUI
 		public static void Main()
 		{
 			GarageUserInputControl newGarage = new GarageUserInputControl();
+
+			Console.WriteLine("Press 'enter' to exit.");
+			Console.ReadLine();
 		}
 	}
 }
