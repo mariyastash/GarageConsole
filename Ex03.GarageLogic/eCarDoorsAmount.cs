@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Ex03.GarageLogic
 {
-	enum eCarDoorsAmount
+	public enum eCarDoorsAmount
 	{
 		Two =2,
 		Three,

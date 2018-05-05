@@ -4,7 +4,10 @@ using System.Text;
 
 namespace Ex03.GarageLogic
 {
-	class eVehicleWheelsAmount
+	public enum eVehicleWheelsAmount
 	{
+		Two = 2,
+		Four = 4,
+		Twelve = 12
 	}
 }
