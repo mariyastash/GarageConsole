@@ -4,8 +4,11 @@ using System.Text;
 
 namespace Ex03.GarageLogic
 {
-	public class RegularMotorcycle : Motorcycle
+	public enum eCarDoorsAmount
 	{
-
+		Two = 2,
+		Three,
+		Four,
+		Five
 	}
 }

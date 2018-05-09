@@ -8,15 +8,25 @@ namespace Ex03.GarageLogic
 	{
 		#region Members and Props
 		#region Members
-		private string m_VehicleBrand;
-		private string m_VehicleRegistrationPlate;
-		private float m_EnergyPercent;
-		Wheels m_Wheels;
-		private eVehicleStatus m_Status;
-
+		public string m_VehicleBrand;
+		public string m_VehicleRegistrationPlate;
+		public Wheels m_Wheels;
+		public eVehicleStatus m_Status;
+		public Engine m_Engine;
+		private VehicleOwner m_VehicleOwner;
 		#endregion Members
 
 		#region Props
+		public Vehicle(string i_VehicleBrand, string i_VehicleRegistrationPlate, Wheels i_Wheels, Engine i_Engine, VehicleOwner i_VehicleOwner)
+		{
+			m_VehicleBrand = i_VehicleBrand;
+			m_VehicleRegistrationPlate = i_VehicleRegistrationPlate;
+			m_Wheels = i_Wheels;
+			m_Status = eVehicleStatus.InTheAmendment;
+			m_Engine = i_Engine;
+			m_VehicleOwner = i_VehicleOwner;
+        }
+
 		public string VehicleBrand
 		{
 			get { return m_VehicleBrand; }
@@ -29,23 +39,31 @@ namespace Ex03.GarageLogic
 			set { m_VehicleRegistrationPlate = value; }
 		}
 
-		public float EnergyPercent
-		{
-			get { return m_EnergyPercent; }
-			set { m_EnergyPercent = value; }
-		}
-
 		public eVehicleStatus VehivleStatus
 		{
 			get { return m_Status; }
 			set { m_Status = value; }
 		}
 
+		public Wheels VehicleWheel
+		{
+			get { return m_Wheels; }
+			set { m_Wheels = value; }
+		}
+
+		public Engine VehicleEngine
+		{
+			get { return m_Engine; }
+			set { m_Engine = value; }
+		} 
+
+
+
 		#endregion Props
 		#endregion Members and Props
 
-		#region Methods
-		public abstract void AddAir();
-		#endregion Methods
+		//#region Methods
+		
+		//#endregion Methods
 	}
 }
