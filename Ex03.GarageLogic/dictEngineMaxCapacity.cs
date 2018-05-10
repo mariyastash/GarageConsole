@@ -6,7 +6,7 @@ namespace Ex03.GarageLogic
 {
 	public class dictEngineMaxCapacity
 	{
-		public Dictionary<string, int> dictFuelMaxCapacity = new Dictionary<string, int>()
+		public Dictionary<string, float> dictFuelMaxCapacity = new Dictionary<string, float>()
 		{
 			{ "Regular motorcycle", 6},
 			{ "Regular car", 45},
