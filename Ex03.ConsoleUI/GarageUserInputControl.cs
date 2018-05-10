@@ -9,7 +9,7 @@ namespace Ex03.ConsoleUI
 	{
 		private GarageLogicControl m_GarageLogic = new GarageLogicControl();
 		private NewVehicleCreature m_NewVehicleCreature = new NewVehicleCreature();
-		private int userChosenAction; /////////////////////////
+		private int userChosenAction = 10; /////////////////////////
 		private VehicleOwner m_Owner;
 		private Stack<string> m_StandatrVehicleStringParams = new Stack<string>();
 		private Stack<float> m_StandatrVehicleFloatParams = new Stack<float>();
@@ -57,9 +57,14 @@ namespace Ex03.ConsoleUI
 		public GarageUserInputControl()
 		{
 			welcomeMessage();
-			userChoice();
-			navigationToUserChosenMethod(userChosenAction);
-		}
+
+			do
+			{
+				userChoice();
+				navigationToUserChosenMethod(userChosenAction);
+			}
+			while (userChosenAction != 0);
+        }
 
 		private void welcomeMessage()
 		{
@@ -82,7 +87,8 @@ Now you can choose what to do next");
 *Enter 4: To add air to the wheels of any vehicle.
 *Enter 5: To add fuel to any car with fuel engine.
 *Enter 6: To charge any electric vehicle.
-*Enter 7: to see all details of any vehecle.");
+*Enter 7: To see all details of any vehecle.
+Enter 0: To exit.");
 
 			Console.WriteLine(msg);
 
@@ -93,7 +99,7 @@ Now you can choose what to do next");
 					Console.WriteLine("The system is waiting for your selection...:");
 					stringUserChocenInput = Console.ReadLine();
 					validInput = int.TryParse(stringUserChocenInput, out userChosenAction);
-					if (userChosenAction < 1 || userChosenAction > 7)
+					if (userChosenAction < 0 || userChosenAction > 7)
 					{
 						validInput = false;
 					}
@@ -120,6 +126,7 @@ Now you can choose what to do next");
 
 					break;
 				case 2:
+					m_GarageLogic.ShowAllVehiclesInGarage();
 					////
 					break;
 				case 3:
@@ -154,8 +161,6 @@ Now you can choose what to do next");
 			ownerPhoneNumber = Console.ReadLine();
 
 			m_Owner = new VehicleOwner(ownerName, ownerPhoneNumber);
-
-			Console.WriteLine(m_Owner.ToString());
 		}
 
 		public void inputForNewVehicleInGarage()

@@ -17,6 +17,12 @@ namespace Ex03.GarageLogic
 			set { m_SupportedVehiclesList = value; }
 		}
 
+		public List<Vehicle> VehicleInGarage
+		{
+			get { return m_VehiclesInGarage; }
+			set { m_VehiclesInGarage = value; }
+		}
+
 		public void AddToSupportedVehicleList(string i_VehicleToAddToSupportedList)
 		{
 			m_SupportedVehiclesList.Add(i_VehicleToAddToSupportedList);
@@ -33,12 +39,15 @@ namespace Ex03.GarageLogic
 
 		public void AddNewVehicleToGarage(Vehicle i_Vehicle)
 		{
-			m_VehiclesInGarage.Add(i_Vehicle);
+			VehicleInGarage.Add(i_Vehicle);
 		}
 
 		public void ShowAllVehiclesInGarage()
 		{
-			
+			foreach (Vehicle vehicle in VehicleInGarage)
+			{
+				Console.WriteLine(vehicle);
+			}
 		}
 	}
 }
