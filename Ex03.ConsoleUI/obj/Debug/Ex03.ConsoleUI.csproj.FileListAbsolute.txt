@@ -5,3 +5,10 @@ C:\Users\Mariya\Desktop\שנה ג סמסטר ב\C#\B18 Ex03 Gregory 317612950 Ma
 C:\Users\Mariya\Desktop\שנה ג סמסטר ב\C#\B18 Ex03 Gregory 317612950 Mariya 321373136\Ex03.ConsoleUI\obj\Debug\Ex03.ConsoleUI.csprojResolveAssemblyReference.cache
 C:\Users\Mariya\Desktop\שנה ג סמסטר ב\C#\B18 Ex03 Gregory 317612950 Mariya 321373136\Ex03.ConsoleUI\obj\Debug\Ex03.ConsoleUI.exe
 C:\Users\Mariya\Desktop\שנה ג סמסטר ב\C#\B18 Ex03 Gregory 317612950 Mariya 321373136\Ex03.ConsoleUI\obj\Debug\Ex03.ConsoleUI.pdb
+D:\Lessons\HIT\Git\GarageConsole\Ex03.ConsoleUI\bin\Debug\Ex03.ConsoleUI.exe
+D:\Lessons\HIT\Git\GarageConsole\Ex03.ConsoleUI\bin\Debug\Ex03.ConsoleUI.pdb
+D:\Lessons\HIT\Git\GarageConsole\Ex03.ConsoleUI\bin\Debug\Ex03.GarageLogic.dll
+D:\Lessons\HIT\Git\GarageConsole\Ex03.ConsoleUI\bin\Debug\Ex03.GarageLogic.pdb
+D:\Lessons\HIT\Git\GarageConsole\Ex03.ConsoleUI\obj\Debug\Ex03.ConsoleUI.csprojResolveAssemblyReference.cache
+D:\Lessons\HIT\Git\GarageConsole\Ex03.ConsoleUI\obj\Debug\Ex03.ConsoleUI.exe
+D:\Lessons\HIT\Git\GarageConsole\Ex03.ConsoleUI\obj\Debug\Ex03.ConsoleUI.pdb

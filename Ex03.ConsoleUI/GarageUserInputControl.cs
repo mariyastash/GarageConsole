@@ -60,7 +60,8 @@ namespace Ex03.ConsoleUI
 			welcomeMessage();
 			do
 			{
-				userChoice();
+                showMainNavigation();
+                userChoice();
 				navigationToUserChosenMethod(userChosenAction);
 			}
 			while (userChosenAction != 0);
@@ -77,8 +78,27 @@ Now you can choose what to do next");
 
 		private void userChoice()
 		{
-			string stringUserChocenInput;
-			bool validInput = false;
+            bool validChoice = true;
+
+			do
+			{
+                try
+                {
+                    validChoice = fetchUserChoice();
+                }
+                catch(Exception ex)
+                {
+                    validChoice = false;
+                    Console.WriteLine(ex.Message);
+                }
+
+			}
+			while (!validChoice);
+			
+		}
+
+        private void showMainNavigation()
+        {
             string msg = string.Format(
 @"*Enter 1: To add a new vehicle to the garage.
 *Enter 2: To see the list of vehicles in the garage.
@@ -89,31 +109,33 @@ Now you can choose what to do next");
 *Enter 7: To see all details of any vehecle.
 Enter 0: To exit.");
 
-			Console.WriteLine(msg);
+            Console.WriteLine(msg);
+        }
 
-			try
-			{
-				do
-				{
-					Console.WriteLine("The system is waiting for your selection...:");
-					stringUserChocenInput = Console.ReadLine();
-					validInput = int.TryParse(stringUserChocenInput, out userChosenAction);
-					if (userChosenAction < 0 || userChosenAction > 7)
-					{
-						validInput = false;
-					}
-					if (!validInput)
-					{
-						Console.WriteLine("invalid input");
-					}
-				}
-				while (!validInput);
-			}
-			catch (FormatException ex)
-			{
-				Console.WriteLine(ex.Message);
-			}
-		}
+        private bool fetchUserChoice()
+        {
+            string stringUserChocenInput;
+            bool validInput = true;
+
+            Console.WriteLine("The system is waiting for your selection...:");
+            try
+            {
+                stringUserChocenInput = Console.ReadLine();
+                validInput = int.TryParse(stringUserChocenInput, out userChosenAction);
+
+                if (userChosenAction < 0 || userChosenAction > 7)
+                {
+                    validInput = false;
+                    throw new Exception("Invalid Choice");
+                }
+            }
+            catch(Exception ex)
+            {
+                throw new Exception("Invalid Choice");
+            }
+
+            return validInput;
+        }
 
 		private void navigationToUserChosenMethod(int i_userChosenAction)
 		{
