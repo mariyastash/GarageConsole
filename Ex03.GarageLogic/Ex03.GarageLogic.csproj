@@ -37,6 +37,7 @@
   <ItemGroup>
     <Compile Include="Car.cs" />
     <Compile Include="dictEngineMaxCapacity.cs" />
+    <Compile Include="dictSupprtedVehicles.cs" />
     <Compile Include="enums\eMaxWheelPSI.cs" />
     <Compile Include="enums\eCarColor.cs" />
     <Compile Include="enums\eCarDoorsAmount.cs" />

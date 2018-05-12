@@ -55,15 +55,23 @@ namespace Ex03.GarageLogic
 		{
 			get { return m_Engine; }
 			set { m_Engine = value; }
-		} 
-
-
+		}
 
 		#endregion Props
 		#endregion Members and Props
 
 		//#region Methods
-		
+		public override string ToString()
+		{
+			string vehicleInfo;
+
+			vehicleInfo = string.Format(
+@"Registration plate: {0}
+Vehicle Brand: {1}
+Vehicle wheels parameters: {2}", VehicleRegistrationPlate, VehicleBrand, VehicleWheel.ToString());
+
+			return vehicleInfo;
+        }
 		//#endregion Methods
 	}
 }

@@ -6,48 +6,20 @@ namespace Ex03.GarageLogic
 {
 	public class GarageLogicControl
 	{
-		////Owner name, owner telephone, vehicle status
+		private dictSupprtedVehicles m_dictSupportedVehicles = new dictSupprtedVehicles();
 
-		public List<string> m_SupportedVehiclesList = new List<string>();
 		public List<Vehicle> m_VehiclesInGarage = new List<Vehicle>();
 
-		public List<string> SupportedVehiclesList
+		public dictSupprtedVehicles SupportedVehiclesList
 		{
-			get { return m_SupportedVehiclesList; }
-			set { m_SupportedVehiclesList = value; }
+			get { return m_dictSupportedVehicles; }
+			set { m_dictSupportedVehicles = value; }
 		}
-
-		public List<Vehicle> VehicleInGarage
-		{
-			get { return m_VehiclesInGarage; }
-			set { m_VehiclesInGarage = value; }
-		}
-
-		public void AddToSupportedVehicleList(string i_VehicleToAddToSupportedList)
-		{
-			m_SupportedVehiclesList.Add(i_VehicleToAddToSupportedList);
-		}
-
-		public void PrintList()
-		{
-			foreach (string vehicle in m_SupportedVehiclesList)
-			{
-				Console.WriteLine(vehicle);
-			}
-		}
-
 
 		public void AddNewVehicleToGarage(Vehicle i_Vehicle)
 		{
-			VehicleInGarage.Add(i_Vehicle);
-		}
-
-		public void ShowAllVehiclesInGarage()
-		{
-			foreach (Vehicle vehicle in VehicleInGarage)
-			{
-				Console.WriteLine(vehicle);
-			}
-		}
+			m_VehiclesInGarage.Add(i_Vehicle);
+			Console.WriteLine(m_VehiclesInGarage.Count);
+        }
 	}
 }

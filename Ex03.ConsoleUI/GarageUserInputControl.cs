@@ -9,12 +9,13 @@ namespace Ex03.ConsoleUI
 	{
 		private GarageLogicControl m_GarageLogic = new GarageLogicControl();
 		private NewVehicleCreature m_NewVehicleCreature = new NewVehicleCreature();
-		private int userChosenAction = 10; /////////////////////////
+		private int userChosenAction; /////////////////////////
 		private VehicleOwner m_Owner;
 		private Stack<string> m_StandatrVehicleStringParams = new Stack<string>();
 		private Stack<float> m_StandatrVehicleFloatParams = new Stack<float>();
 		private Vehicle m_Vehicle;
 		private eFuelType m_FuelType;
+	
 		
 		private Wheels m_wheel;
 
@@ -57,7 +58,6 @@ namespace Ex03.ConsoleUI
 		public GarageUserInputControl()
 		{
 			welcomeMessage();
-
 			do
 			{
 				userChoice();
@@ -73,8 +73,7 @@ namespace Ex03.ConsoleUI
 Now you can choose what to do next");
 			Console.WriteLine(msg);
 			Console.WriteLine();
-			AddSupportedVehicles();
-		}
+        }
 
 		private void userChoice()
 		{
@@ -123,14 +122,12 @@ Enter 0: To exit.");
 				case 1:
 					inputForNewOwnerInGarage();
 					inputForNewVehicleInGarage();
-
 					break;
 				case 2:
-					m_GarageLogic.ShowAllVehiclesInGarage();
-					////
+					ShowAllVehiclesInGarage();
 					break;
 				case 3:
-					////
+					changeVehicleStatus();
 					break;
 				case 4:
 					////
@@ -175,7 +172,7 @@ Enter 0: To exit.");
 You can choice from supported vehicles list: 
 ");
 			Console.WriteLine(msg);
-			m_GarageLogic.PrintList();
+			m_GarageLogic.SupportedVehiclesList.printDictionary();
 			validInput = int.TryParse(Console.ReadLine(), out choicenVehicle);
 
 			InputStandartVehicleParams();
@@ -197,60 +194,57 @@ You can choice from supported vehicles list:
 			{
 				case 1:
 					FuelType = eFuelType.Octan96;
-					vehicleType = "Regular motorcycle";
+					validInput = m_GarageLogic.SupportedVehiclesList.SupportedVehicles.TryGetValue(choicenVehicle, out vehicleType);
 
 					inputForMotorcycle(ref motoDriverLicense, ref engineCapaciyInCC);
 					m_NewVehicleCreature.CreateNewEngine(vehicleType, FuelType);
-                    m_NewVehicleCreature.CreateNewMotorcycleInGarage(Owner, wheelsBrand, motoDriverLicense, engineCapaciyInCC); 
+					m_Vehicle = m_NewVehicleCreature.CreateNewMotorcycleInGarage(Owner, wheelsBrand, motoDriverLicense, engineCapaciyInCC);
+					m_GarageLogic.AddNewVehicleToGarage(m_Vehicle);
 					break;
 
 				case 2:
 					FuelType = eFuelType.Electricity;
-					vehicleType = "Electric motorcycle";
+					validInput = m_GarageLogic.SupportedVehiclesList.SupportedVehicles.TryGetValue(choicenVehicle, out vehicleType);
 
 					inputForMotorcycle(ref motoDriverLicense, ref engineCapaciyInCC);
 					m_NewVehicleCreature.CreateNewEngine(vehicleType, FuelType);
-					m_NewVehicleCreature.CreateNewMotorcycleInGarage(Owner, wheelsBrand, motoDriverLicense, engineCapaciyInCC);
+					m_Vehicle = m_NewVehicleCreature.CreateNewMotorcycleInGarage(Owner, wheelsBrand, motoDriverLicense, engineCapaciyInCC);
+					m_GarageLogic.AddNewVehicleToGarage(m_Vehicle);
 					break;
 
 				case 3:
 					FuelType = eFuelType.Octan98;
-					vehicleType = "Regular car";
+					validInput = m_GarageLogic.SupportedVehiclesList.SupportedVehicles.TryGetValue(choicenVehicle, out vehicleType);
 
 					inputForCar(ref carColor, ref carDoorsAmout);
 					m_NewVehicleCreature.CreateNewEngine(vehicleType, FuelType);
-					m_NewVehicleCreature.CreateNewCarInGarage(Owner, wheelsBrand, carColor, carDoorsAmout);
+					m_Vehicle = m_NewVehicleCreature.CreateNewCarInGarage(Owner, wheelsBrand, carColor, carDoorsAmout);
+					m_GarageLogic.AddNewVehicleToGarage(m_Vehicle);
 					break;
 				case 4:
 					FuelType = eFuelType.Electricity;
-					vehicleType = "Electric car";
+					validInput = m_GarageLogic.SupportedVehiclesList.SupportedVehicles.TryGetValue(choicenVehicle, out vehicleType);
 
 					inputForCar(ref carColor, ref carDoorsAmout);
 					m_NewVehicleCreature.CreateNewEngine(vehicleType, FuelType);
-					m_NewVehicleCreature.CreateNewCarInGarage(Owner, wheelsBrand, carColor, carDoorsAmout);
+					m_Vehicle = m_NewVehicleCreature.CreateNewCarInGarage(Owner, wheelsBrand, carColor, carDoorsAmout);
+					m_GarageLogic.AddNewVehicleToGarage(m_Vehicle);
 					break;
 
 				case 5:
 					FuelType = eFuelType.Soler;
-					vehicleType = "Truck";
+					validInput = m_GarageLogic.SupportedVehiclesList.SupportedVehicles.TryGetValue(choicenVehicle, out vehicleType);
+
 					InputForTruck(ref truckIsCooled, ref truckCapacity);
 					m_NewVehicleCreature.CreateNewEngine(vehicleType, FuelType);
-					m_NewVehicleCreature.CreateNewTruckInGarage(Owner, wheelsBrand, truckIsCooled, truckCapacity);
+					m_Vehicle = m_NewVehicleCreature.CreateNewTruckInGarage(Owner, wheelsBrand, truckIsCooled, truckCapacity);
+					m_GarageLogic.AddNewVehicleToGarage(m_Vehicle);
 					break;
 
 				default:
 					Console.WriteLine("invalid input");
 					break;
 			}
-		}
-
-		public void AddSupportedVehicles()
-		{	
-			m_GarageLogic.AddToSupportedVehicleList("1 : Regular motorcycle");
-			m_GarageLogic.AddToSupportedVehicleList("2 : Electric motorcycle");
-			m_GarageLogic.AddToSupportedVehicleList("3 : Regular car");
-			m_GarageLogic.AddToSupportedVehicleList("4 : Electric car");
-			m_GarageLogic.AddToSupportedVehicleList("5 : Trunk");
 		}
 
 		public void InputStandartVehicleParams()
@@ -335,5 +329,77 @@ You can choice from supported vehicles list:
 			return wheelsBrand;
 
 		}
-    }
+
+		public void ShowAllVehiclesInGarage()
+		{
+			string userStringSelection;
+			int userSelection;
+			bool validInput = false;
+			Console.WriteLine(string.Format(
+@"Please Choose what state of vehicles you want to see:
+1 : All vehicle in garage.
+2 : {0}.
+3 : {1}.
+4 : {2}.
+", eVehicleStatus.InTheAmendment, eVehicleStatus.Fixed, eVehicleStatus.PaidUp));
+
+			userStringSelection = Console.ReadLine();
+			validInput = int.TryParse(userStringSelection, out userSelection);
+            Console.Clear();
+
+			Console.WriteLine("List of vehicles:");
+			if (userSelection == 1)
+			{
+				foreach (var veh in m_GarageLogic.m_VehiclesInGarage)
+				{
+					string plate = veh.VehicleRegistrationPlate;
+					Console.WriteLine(plate);
+				}
+			}
+
+			else
+			{
+				foreach (var veh in m_GarageLogic.m_VehiclesInGarage)
+				{
+					if (veh.m_Status == (eVehicleStatus)userSelection)
+					{
+						string plate = veh.VehicleRegistrationPlate;
+						Console.WriteLine(plate);
+					}
+				}
+			}
+		} //2
+
+		private void changeVehicleStatus()
+		{
+			string choicenVehicleRegistrationPlate, userStringSelection;
+			bool validInput = false;
+			int userSelection;
+            Console.WriteLine("Please choice vehicle registration plate to change vehicle status:");
+			foreach (var veh in m_GarageLogic.m_VehiclesInGarage)
+			{
+				Console.WriteLine(veh.VehicleRegistrationPlate);
+			}
+
+			choicenVehicleRegistrationPlate = Console.ReadLine();
+			Console.WriteLine(string.Format(
+@"Please select new status:
+1 : Do not change.
+2 : {0}.
+3 : {1}.
+4 : {2}.
+", eVehicleStatus.InTheAmendment, eVehicleStatus.Fixed, eVehicleStatus.PaidUp));
+
+			userStringSelection = Console.ReadLine();
+			validInput = int.TryParse(userStringSelection, out userSelection);
+
+			foreach (var veh in m_GarageLogic.m_VehiclesInGarage)
+			{
+				if (veh.VehicleRegistrationPlate == choicenVehicleRegistrationPlate)
+				{
+					veh.VehivleStatus = (eVehicleStatus)userSelection;
+                }
+			}
+		} //3
+	}
 }

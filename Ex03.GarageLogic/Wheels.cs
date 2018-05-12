@@ -38,5 +38,14 @@ namespace Ex03.GarageLogic
 		{
 			return false;
 		}
+
+		public override string ToString()
+		{
+			return string.Format(
+@"Brand: {0}
+Current PSI: {1}
+Max PSI: {2}
+", WheelsBrandName, WheelsCurrentPSI, WheelMaxPSI);
+		}
 	}
 }

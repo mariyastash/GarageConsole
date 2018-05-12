@@ -6,7 +6,7 @@ namespace Ex03.GarageLogic
 {
 	public class NewVehicleCreature
 	{
-		private GarageLogicControl m_GarageLogicControl = new GarageLogicControl();
+	//	private GarageUserInputControl m_GarageUserInputControl = new GarageUserInputControl();
 		private Vehicle m_Vehicle;
 		private Wheels m_Wheels;
 		private dictEngineMaxCapacity m_EnergyMaxCapacity = new dictEngineMaxCapacity();
@@ -64,7 +64,7 @@ namespace Ex03.GarageLogic
 			}
 		}
 
-		public void CreateNewMotorcycleInGarage(VehicleOwner i_Owner, string i_WheelsBrand, string i_MotoDriverLicense, int i_EngineCapaciyInCC)
+		public Vehicle CreateNewMotorcycleInGarage(VehicleOwner i_Owner, string i_WheelsBrand, string i_MotoDriverLicense, int i_EngineCapaciyInCC)
 		{
 			string wheelsBrand = i_WheelsBrand;
 			
@@ -72,10 +72,10 @@ namespace Ex03.GarageLogic
 
 			Wheel = new Wheels(wheelsBrand, m_CurrentWheelPSI, eMaxWheelPSI.Motorcycle, eVehicleWheelsAmount.Two);
 			vehicle = new Motorcycle(vehicleBrandName, vehicleRegistrationPlate, Wheel, VehicleEngine, driverLicense, i_Owner, i_EngineCapaciyInCC);
-			m_GarageLogicControl.AddNewVehicleToGarage(vehicle);
-		}
+			return vehicle;
+        }
 
-		public void CreateNewCarInGarage(VehicleOwner i_Owner, string i_WheelsBrand, string i_Color, int i_DoorsAmount)
+		public Vehicle CreateNewCarInGarage(VehicleOwner i_Owner, string i_WheelsBrand, string i_Color, int i_DoorsAmount)
 		{
 			string wheelsBrand = i_WheelsBrand;
 
@@ -84,16 +84,18 @@ namespace Ex03.GarageLogic
 			
 			Wheel = new Wheels(wheelsBrand, m_CurrentWheelPSI, eMaxWheelPSI.Car, eVehicleWheelsAmount.Four);
 			vehicle = new Car(vehicleBrandName, vehicleRegistrationPlate, Wheel, VehicleEngine, carColor, carDoorsAmount, i_Owner);
-			m_GarageLogicControl.AddNewVehicleToGarage(vehicle);
+
+			return vehicle;
 		}
 
-		public void CreateNewTruckInGarage(VehicleOwner i_Owner, string i_WheelsBrand, bool i_TruckIsCooled, float i_TruckCapacity)
+		public Vehicle CreateNewTruckInGarage(VehicleOwner i_Owner, string i_WheelsBrand, bool i_TruckIsCooled, float i_TruckCapacity)
 		{
 			string wheelsBrand = i_WheelsBrand;
 
 			Wheel = new Wheels(wheelsBrand, m_CurrentWheelPSI, eMaxWheelPSI.Car, eVehicleWheelsAmount.Twelve);
 			vehicle = new Truck(vehicleBrandName, vehicleRegistrationPlate, Wheel, VehicleEngine, i_TruckIsCooled, i_TruckCapacity, i_Owner);
-			m_GarageLogicControl.AddNewVehicleToGarage(vehicle);
+
+			return vehicle;
 		}
     }
 }
