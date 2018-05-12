@@ -18,16 +18,29 @@ namespace Ex03.GarageLogic
 			m_TruckCapacity = i_TrunkCapacity;
         }
 
-		public float TrunkCapacity
+		public float TruckCapacity
 		{
 			get { return m_TruckCapacity; }
 			set { m_TruckCapacity = value; }
 		}
 
-		public bool TrunkIsCooled
+		public bool TruckIsCooled
 		{
 			get { return m_TruckIsCooled; }
 			set { m_TruckIsCooled = value; }
+		}
+
+		public override string ToString()
+		{
+			string TruckInfo;
+
+			TruckInfo = string.Format(
+@"Is the truck carring dangerouse material: {0}
+The truck capacity: {1}
+",
+TruckIsCooled,
+TruckCapacity);
+			return base.ToString() + TruckInfo;
 		}
 	}
 }

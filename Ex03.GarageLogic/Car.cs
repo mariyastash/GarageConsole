@@ -41,5 +41,18 @@ namespace Ex03.GarageLogic
 		{
 			get { return m_EngineMaxCapacity; }
 		}
+
+		public override string ToString()
+		{
+			string CarInfo;
+
+			CarInfo = string.Format(
+@"Car color is: {0}
+The Quantity of doors is: {1}
+",
+CarColor,
+CarDoorsAmount);
+			return base.ToString() + CarInfo;
+		}
 	}
 }

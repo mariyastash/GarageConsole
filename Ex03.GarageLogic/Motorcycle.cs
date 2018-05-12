@@ -29,5 +29,19 @@ namespace Ex03.GarageLogic
 			get { return m_MotoDriverLicense; }
 			set { m_MotoDriverLicense = value; }
 		}
+
+		public override string ToString()
+		{
+			string motorcycleInfo;
+
+			motorcycleInfo = string.Format(
+@"The driving license type is: {0}
+The engine volume is: {1} (per CC)
+",
+MotoDriverLicense,
+EngineVolumeInCC);
+
+			return base.ToString() + motorcycleInfo;
+		}
 	}
 }

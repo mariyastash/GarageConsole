@@ -130,18 +130,17 @@ Enter 0: To exit.");
 					changeVehicleStatus();
 					break;
 				case 4:
-					////
+					fillAirToMaximum();
 					break;
 				case 5:
-					////
+					
 					break;
 				case 6:
-					////
-					Console.WriteLine("six");
+					rechargeElectricVehicle();
 					break;
 				case 7:
-					////
-					break;
+					showAllVehicleInfo();
+                    break;
 				default:
 					break;
 			}
@@ -401,5 +400,110 @@ You can choice from supported vehicles list:
                 }
 			}
 		} //3
+
+		private void fillAirToMaximum()
+		{
+			string choicenVehicleRegistrationPlate;
+
+            Console.WriteLine("Please choice vehicle registration plate to fill air:");
+			foreach (var veh in m_GarageLogic.m_VehiclesInGarage)
+			{
+				Console.WriteLine(veh.VehicleRegistrationPlate);
+			}
+
+			choicenVehicleRegistrationPlate = Console.ReadLine();
+			foreach (var veh in m_GarageLogic.m_VehiclesInGarage)
+			{
+				if (veh.VehicleRegistrationPlate == choicenVehicleRegistrationPlate)
+				{
+					veh.VehicleWheel.FillAir(); 
+				}
+			}
+		} //4
+
+		private void rechargeElectricVehicle()
+		{
+			string choicenVehicleRegistrationPlate, userChoiceMinutsToAdd;
+			float hoursToAdd;
+			bool validInput;
+
+			Console.WriteLine("Please choice electric vehicle registration plate to recharge engine:");
+			foreach (var veh in m_GarageLogic.m_VehiclesInGarage)
+			{
+				if (typeof(ElectricEngine).IsAssignableFrom(veh.VehicleEngine.GetType()))
+				{
+					Console.WriteLine(veh.VehicleRegistrationPlate);
+				}
+				else
+				{
+					Console.WriteLine("No electric vehicles in garage.");
+				}
+			}
+
+			choicenVehicleRegistrationPlate = Console.ReadLine();
+			Console.WriteLine("Enter minuts to add:");
+			userChoiceMinutsToAdd = Console.ReadLine();
+			validInput = float.TryParse(userChoiceMinutsToAdd, out hoursToAdd);
+			hoursToAdd /= 60;
+            foreach (var veh in m_GarageLogic.m_VehiclesInGarage)
+			{
+				if (veh.VehicleRegistrationPlate == choicenVehicleRegistrationPlate)
+				{
+					veh.VehicleEngine.AddEnergy(hoursToAdd);
+				}
+			}
+		} //6
+
+		private void addFuelToVehicle()
+		{
+			string choicenVehicleRegistrationPlate, userChoiceLiterToAdd;
+			float litersToAdd;
+			bool validInput;
+
+			Console.WriteLine("Please choice fuel vehicle registration plate to add fuel:");
+			foreach (var veh in m_GarageLogic.m_VehiclesInGarage)
+			{
+				if (typeof(FuelEngine).IsAssignableFrom(veh.VehicleEngine.GetType()))
+				{
+					Console.WriteLine(veh.VehicleRegistrationPlate);
+				}
+				else
+				{
+					Console.WriteLine("No fuel vehicles in garage.");
+				}
+			}
+
+			choicenVehicleRegistrationPlate = Console.ReadLine();
+			Console.WriteLine("Enter liters to add:");
+			userChoiceLiterToAdd = Console.ReadLine();
+			validInput = float.TryParse(userChoiceLiterToAdd, out litersToAdd);
+			foreach (var veh in m_GarageLogic.m_VehiclesInGarage)
+			{
+				if (veh.VehicleRegistrationPlate == choicenVehicleRegistrationPlate)
+				{
+					veh.VehicleEngine.AddEnergy(litersToAdd);
+				}
+			}
+		} //5
+
+		private void showAllVehicleInfo()
+		{
+			string choicenVehicleRegistrationPlate;
+		//	bool validInput;
+			string vehicleFullyInfo;
+
+			Console.WriteLine("Please choice vehicle registration plate from garage:");
+			foreach (var veh in m_GarageLogic.m_VehiclesInGarage)
+			{
+				Console.WriteLine(veh.VehicleRegistrationPlate);
+			}
+
+			choicenVehicleRegistrationPlate = Console.ReadLine();
+			vehicleFullyInfo = m_GarageLogic.DisplayVehicleFullyInfo(choicenVehicleRegistrationPlate);
+
+			Console.WriteLine(vehicleFullyInfo + Owner.ToString());
+			Console.WriteLine("To continue press any key...");
+			Console.ReadLine();
+		}
 	}
 }

@@ -38,9 +38,28 @@ namespace Ex03.GarageLogic
 			set { m_FuelType = value; }
 		}
 
-		public bool Refuel(eFuelType i_FuelType, int i_Amount)
+		public override void AddEnergy(float i_AmountToFill)
 		{
-			return true;
+			CurrentFuelCapacity += i_AmountToFill;
+
+			if (CurrentFuelCapacity > MaxFuelCapacity)
+			{
+				CurrentFuelCapacity = MaxFuelCapacity;
+            }
+        }
+
+		public override string ToString()
+		{
+			string energyInfo;
+
+			energyInfo = string.Format(
+@"Max fuel capacity: {0}
+Current fuel amount: {1}
+",
+MaxFuelCapacity,
+CurrentFuelCapacity);
+
+			return energyInfo;
 		}
 	}
 }

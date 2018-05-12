@@ -34,18 +34,25 @@ namespace Ex03.GarageLogic
 			set { m_MaxPSI = value; }
 		}
 
-		public bool FillAir()
+		public void FillAir()
 		{
-			return false;
+			WheelsCurrentPSI = (float)WheelMaxPSI;
 		}
 
 		public override string ToString()
 		{
-			return string.Format(
-@"Brand: {0}
-Current PSI: {1}
-Max PSI: {2}
-", WheelsBrandName, WheelsCurrentPSI, WheelMaxPSI);
+			string wheelInfo;
+
+			wheelInfo = string.Format(
+@"Brand wheels name is: {0}
+The max air PSI is: {1}
+Current air pressure is: {2}
+",
+WheelsBrandName,
+WheelMaxPSI,
+WheelsCurrentPSI);
+
+			return wheelInfo;
 		}
 	}
 }

@@ -66,12 +66,18 @@ namespace Ex03.GarageLogic
 			string vehicleInfo;
 
 			vehicleInfo = string.Format(
-@"Registration plate: {0}
-Vehicle Brand: {1}
-Vehicle wheels parameters: {2}", VehicleRegistrationPlate, VehicleBrand, VehicleWheel.ToString());
+@"Brand Name: {0}
+Registration plate: {1}
+Number of Wheels is: {2} 
+{3}
+",
+VehicleBrand,
+VehicleRegistrationPlate,
+VehicleWheel,
+VehicleEngine);
 
-			return vehicleInfo;
-        }
+			return vehicleInfo + VehicleWheel.ToString();
+		}
 		//#endregion Methods
 	}
 }

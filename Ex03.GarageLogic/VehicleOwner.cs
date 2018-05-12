@@ -29,7 +29,15 @@ namespace Ex03.GarageLogic
 
 		public override string ToString()
 		{
-			return string.Format("Owner Name: {0} Owner Phone number: {1}", OwnerName, OwnerPhoneNumber).ToString();
+			string vehicleInGarageOwnerInfo = string.Format(
+@"Owner name: {0}
+Owner phone number: {1}
+",
+OwnerName,
+OwnerPhoneNumber
+);
+
+			return base.ToString() + vehicleInGarageOwnerInfo;
 		}
 	}
 }

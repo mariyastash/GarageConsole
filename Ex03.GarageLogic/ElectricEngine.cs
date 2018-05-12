@@ -34,9 +34,21 @@ namespace Ex03.GarageLogic
 			set { m_CurrentHoursCapacity = value; }
 		}
 		
-		public bool Recharge(int i_HoursAmount)
+		public override void AddEnergy(float i_HoursAmountToAdd)
 		{
-			return true;
+			CurrentHoursCapacity += i_HoursAmountToAdd;
+
+			if (CurrentHoursCapacity > MaxHoursCapacity)
+			{
+				CurrentHoursCapacity = MaxHoursCapacity;
+            }
+        }
+
+		public override string ToString()
+		{
+			string EngineInfo = "The energy type is: Electricity";
+
+			return base.ToString() + EngineInfo;
 		}
 	}
 }
