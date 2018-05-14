@@ -48,7 +48,7 @@ namespace Ex03.GarageLogic
 		{
 			string EngineInfo = "The energy type is: Electricity";
 
-			return base.ToString() + EngineInfo;
+			return EngineInfo;
 		}
 	}
 }
