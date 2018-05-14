@@ -42,8 +42,8 @@ namespace Ex03.GarageLogic
 		{
 			vehicleRegistrationPlate = i_StandartVehicleStringParams.Pop(); //vehicle Registration Plate
 			vehicleBrandName = i_StandartVehicleStringParams.Pop(); //vehicle Brand Name
-			m_CurrentEnergyCapacity = i_StandartVehicleFloatParams.Pop();
 			m_CurrentWheelPSI = i_StandartVehicleFloatParams.Pop();
+			m_CurrentEnergyCapacity = i_StandartVehicleFloatParams.Pop();
 
 		}
 

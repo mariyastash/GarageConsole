@@ -8,13 +8,15 @@ namespace Ex03.GarageLogic
 	{
 		private readonly string m_BrandName;
 		private float m_CurrentPSI;
-		eMaxWheelPSI m_MaxPSI;
+		private eMaxWheelPSI m_MaxPSI;
+        private eVehicleWheelsAmount m_AmountOfWheels;
 
-		public Wheels(string i_BrandName, float i_CurrentPSI, eMaxWheelPSI i_MaxPSI, eVehicleWheelsAmount i_VehicleWheelsAmount)
+        public Wheels(string i_BrandName, float i_CurrentPSI, eMaxWheelPSI i_MaxPSI, eVehicleWheelsAmount i_VehicleWheelsAmount)
 		{
 			m_BrandName = i_BrandName;
 			m_CurrentPSI = i_CurrentPSI;
 			m_MaxPSI = i_MaxPSI;
+            m_AmountOfWheels = i_VehicleWheelsAmount;
         }
 
 		public string WheelsBrandName
@@ -34,7 +36,13 @@ namespace Ex03.GarageLogic
 			set { m_MaxPSI = value; }
 		}
 
-		public void FillAir()
+        public eVehicleWheelsAmount NumberOfWheels
+        {
+            get { return m_AmountOfWheels; }
+            set { m_AmountOfWheels = value; }
+        }
+
+        public void FillAir()
 		{
 			WheelsCurrentPSI = (float)WheelMaxPSI;
 		}
@@ -45,11 +53,12 @@ namespace Ex03.GarageLogic
 
 			wheelInfo = string.Format(
 @"Brand wheels name is: {0}
-The max air PSI is: {1}
-Current air pressure is: {2}
-",
+Number of Wheels: {1}
+The max air PSI is: {2}
+Current air pressure is: {3}",
 WheelsBrandName,
-WheelMaxPSI,
+(int)NumberOfWheels,
+(int)WheelMaxPSI,
 WheelsCurrentPSI);
 
 			return wheelInfo;

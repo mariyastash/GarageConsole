@@ -48,10 +48,9 @@ namespace Ex03.GarageLogic
 
 			CarInfo = string.Format(
 @"Car color is: {0}
-The Quantity of doors is: {1}
-",
+Number of doors is: {1}",
 CarColor,
-CarDoorsAmount);
+(int)CarDoorsAmount);
 			return base.ToString() + CarInfo;
 		}
 	}

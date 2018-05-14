@@ -54,8 +54,7 @@ namespace Ex03.GarageLogic
 
 			energyInfo = string.Format(
 @"Max fuel capacity: {0}
-Current fuel amount: {1}
-",
+Current fuel amount: {1}",
 MaxFuelCapacity,
 CurrentFuelCapacity);
 

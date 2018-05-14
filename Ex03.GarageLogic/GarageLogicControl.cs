@@ -30,14 +30,18 @@ namespace Ex03.GarageLogic
 
 		public string DisplayVehicleFullyInfo(string i_RegistrationPlate)
 		{
+            string allVehicles = null;
 			foreach (Vehicle veh in m_VehiclesInGarage)
 			{
 				if (veh.m_VehicleRegistrationPlate == i_RegistrationPlate)
 				{
-					return veh.ToString();
+                    allVehicles += veh.ToString();
+                    allVehicles += "\n-----------------------------------------------------\n";
                 }
 			}
-			return null;
+
+
+			return allVehicles;
 		}
 	}
 }

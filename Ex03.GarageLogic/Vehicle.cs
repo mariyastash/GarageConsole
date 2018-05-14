@@ -51,10 +51,16 @@ namespace Ex03.GarageLogic
 			set { m_Wheels = value; }
 		}
 
-		public Engine VehicleEngine
+        public Engine VehicleEngine
+        {
+            get { return m_Engine; }
+            set { m_Engine = value; }
+        }
+
+        public VehicleOwner Owner
 		{
-			get { return m_Engine; }
-			set { m_Engine = value; }
+			get { return m_VehicleOwner; }
+			set { m_VehicleOwner = value; }
 		}
 
 		#endregion Props
@@ -66,18 +72,23 @@ namespace Ex03.GarageLogic
 			string vehicleInfo;
 
 			vehicleInfo = string.Format(
-@"Brand Name: {0}
-Registration plate: {1}
-Number of Wheels is: {2} 
+@"
+Owner:
+{0}
+
+Vehicle:
+Brand Name: {1}
+Registration plate: {2}
 {3}
+{4}
 ",
+Owner.ToString(),
 VehicleBrand,
 VehicleRegistrationPlate,
-VehicleWheel,
+VehicleWheel.ToString(),
 VehicleEngine);
 
-			return vehicleInfo + VehicleWheel.ToString();
+			return vehicleInfo;
 		}
-		//#endregion Methods
 	}
 }

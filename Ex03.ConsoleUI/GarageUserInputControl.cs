@@ -299,15 +299,29 @@ You can choice from supported vehicles list:
         {
             bool isValidInput = false;
 
-            Console.WriteLine("Please enter Motorcycle drive license:");
-            i_driverLicense = Console.ReadLine();
-            foreach (eMotoDriverLicense license in Enum.GetValues(typeof(eMotoDriverLicense)))
+            do
             {
-                if (i_driverLicense == license.ToString())
+                Console.WriteLine("Please enter Motorcycle drive license:");
+                i_driverLicense = Console.ReadLine();
+
+                foreach (eMotoDriverLicense license in Enum.GetValues(typeof(eMotoDriverLicense)))
                 {
-                    isValidInput = true;
+                    if (i_driverLicense == license.ToString())
+                    {
+                        isValidInput = true;
+                    }
+                }
+
+                if (!isValidInput)
+                {
+                    Console.WriteLine("Chose from license list:");
+                    foreach (eMotoDriverLicense license in Enum.GetValues(typeof(eMotoDriverLicense)))
+                    {
+                        Console.WriteLine("{0}", license.ToString());
+                    }
                 }
             }
+            while (!isValidInput);
 
             Console.WriteLine("Please enter Engine volume in cc:");
             isValidInput = int.TryParse(Console.ReadLine(), out i_engineVolumeInCC);
@@ -577,7 +591,7 @@ You can choice from supported vehicles list:
             choicenVehicleRegistrationPlate = Console.ReadLine();
             vehicleFullyInfo = m_GarageLogic.DisplayVehicleFullyInfo(choicenVehicleRegistrationPlate);
 
-            Console.WriteLine(vehicleFullyInfo + Owner.ToString());
+            Console.WriteLine(vehicleFullyInfo);
             Console.WriteLine("To continue press any key...");
             Console.ReadLine();
 
